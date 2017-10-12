@@ -153,15 +153,14 @@ module.exports = {
               // directory for faster rebuilds.
               cacheDirectory: true,
             }, */
-            query: {//params
-              cacheDirectory: true,
-              // presets: ['es2015','react', "stage-0"],
-              "plugins": [
+            options: {
+              plugins: [
                 "transform-runtime",
                 ["import", [{ "libraryName": "antd", "style": "css" }]],
                 ["transform-class-properties", { "spec": true }]
               ],
-              "comments": false,
+              comments: false,
+              cacheDirectory: true,
             },
             /* end modify */
           },
