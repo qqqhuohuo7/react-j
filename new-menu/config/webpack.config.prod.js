@@ -148,10 +148,22 @@ module.exports = {
             test: /\.(js|jsx)$/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
-            options: {
+            /* modify for babel-plugin-import(antd按需加载) setting */
+            /* options: {
               
               compact: true,
+            }, */
+            query: {//params
+              compact: true,
+              // presets: ['es2015','react', "stage-0"],
+              "plugins": [
+                "transform-runtime",
+                ["import", [{ "libraryName": "antd", "style": "css" }]],
+                ["transform-class-properties", { "spec": true }]
+              ],
+              "comments": false,
             },
+            /* end modify */
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.

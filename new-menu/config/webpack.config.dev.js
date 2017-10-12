@@ -145,13 +145,25 @@ module.exports = {
             test: /\.(js|jsx)$/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
-            options: {
+            /* modify for babel-plugin-import(antd按需加载) setting */
+            /* options: {
               
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
               cacheDirectory: true,
+            }, */
+            query: {//params
+              cacheDirectory: true,
+              // presets: ['es2015','react', "stage-0"],
+              "plugins": [
+                "transform-runtime",
+                ["import", [{ "libraryName": "antd", "style": "css" }]],
+                ["transform-class-properties", { "spec": true }]
+              ],
+              "comments": false,
             },
+            /* end modify */
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
