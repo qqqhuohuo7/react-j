@@ -1,8 +1,8 @@
 /**
  * Created by pei_zhou on 2017-10-17 10:23:36 
  */
-const AllMenu = {
-    top1: [
+const AllMenu = [
+    [
         {
             'name': 'page1',
             'url': 'page1',
@@ -32,7 +32,7 @@ const AllMenu = {
             'url': 'page7',
         }
     ],
-    top2: [
+    [
         {
             'name': 'page8',
             'url': 'page8',
@@ -42,7 +42,7 @@ const AllMenu = {
             'url': 'page9',
         }
     ],
-    top3: [
+    [
         {
             'name': 'page10',
             'url': 'page10',
@@ -52,5 +52,5 @@ const AllMenu = {
             'url': 'page11',
         }
     ]
-}
+]
 export default AllMenu;
