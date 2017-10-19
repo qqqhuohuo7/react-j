@@ -4,7 +4,7 @@
 const AllMenu = [
     [
         {
-            'name': 'page1',
+            'name': 'page1-table',
             'url': 'page1',
         },
         {

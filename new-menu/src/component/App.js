@@ -1,51 +1,68 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../asset/css/App.css';
 import { Layout, Menu, Icon } from 'antd';
+import 'asset/css/App.css';
 import Content from './content';
-import AllMenu from '../utils/menu';
-const SubMenu = Menu.SubMenu;
+import AllMenu from 'utils/menu';
+import Utils from 'utils/';
+
+const { SubMenu } = Menu.SubMenu;
 const { Header, Sider } = Layout;
 
 class App extends Component {
   constructor(props){
     super(props);
+    this.toHome = this.toHome.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleSiderClick = this.handleSiderClick.bind(this);
     this.state = {
       current: '0',
+      siderCurrent: null,
       siderMenu: AllMenu[0]
     };
   };
   handleClick(e){
     this.setState({
       current: e.key,
-      siderMenu: AllMenu[e.key]
-    }, function(){
-      window.location.hash = ''
-    });
+      siderCurrent: null,
+      siderMenu: AllMenu[e.key],
+    }, Utils.clearHash);
+  }
+  handleSiderClick(e){
+    this.setState({
+      siderCurrent: e.key,
+    })
+  }
+  toHome(){
+    Utils.clearHash();
+    this.setState({
+      siderCurrent: null
+    })
   }
   render() {
     return (
-      <Layout style={{height: '100%'}}>
-        <Header style={{ height: '50px' }}>
-          <div className="logo" />
+      <Layout className='app-layout'>
+        <Header className='ly-header'>
+          <div className="logo" onClick={this.toHome}><Icon type="home" />home </div>
           <Menu
             theme="dark"
             mode="horizontal"
             onClick={this.handleClick}
             selectedKeys={[this.state.current]}
-            style={{ lineHeight: '50px' }}
+            className='nav-menu'
           >
             <Menu.Item key="0"><Icon type="appstore" />nav 1</Menu.Item>
             <Menu.Item key="1"><Icon type="mail" />nav 2</Menu.Item>
             <Menu.Item key="2"><Icon type="setting" />nav 3</Menu.Item>
           </Menu>
         </Header>
-        <Layout>
-          <Sider width={200} style={{ background: '#fff' }}>
+        <Layout className='ly-layout'>
+          <Sider width={200} className='ly-sider'>
             <Menu
               mode="inline"
-              style={{ height: '100%', borderRight: 0 }}
+              selectedKeys={[this.state.siderCurrent]}
+              onClick={this.handleSiderClick}
+              className='sider-menu'
             >
               {
                 this.state.siderMenu.map((subMenu) => {

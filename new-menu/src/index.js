@@ -1,17 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-// import { Router } from 'react-router-dom';
 import { HashRouter } from 'react-router-dom';
 import { Route, Redirect } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import registerServiceWorker from './registerServiceWorker';
 import './asset/css/index.css';
 import App from './component/App';
-// import createBrowserHistory from 'history/createBrowserHistory';
-import registerServiceWorker from './registerServiceWorker';
-
-// const customHistory = createBrowserHistory()
 import rd from 'reducer/'
 
 const store = createStore(
@@ -31,12 +27,4 @@ render(
     </Provider>,
     document.getElementById('root')
 );
-/* render(
-    <Router history={customHistory} >
-        <div style={{height: '100%'}}>
-        <Route path='/' component={App} />
-        </div>
-    </Router>,
-    document.getElementById('root')
-); */
 registerServiceWorker();

@@ -44,7 +44,6 @@ export default class Cp extends Component{
             })
         }
     }
-    
     getData(){
         if(typeof(this.props.getData)=='function'){
             this.props.getData();
