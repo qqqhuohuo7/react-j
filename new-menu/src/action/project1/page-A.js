@@ -3,8 +3,6 @@
  */
 import { createAction } from 'redux-actions';
 import fetchJsonp from 'fetch-jsonp';
-import moment from 'moment';
-import fetch from 'isomorphic-fetch'
 
 const requestPosts = createAction('REQUEST_POSTS', function(param) {
     return {

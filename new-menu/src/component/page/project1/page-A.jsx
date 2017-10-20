@@ -25,7 +25,7 @@ export default class Cp extends Component{
                 key: 'operation',
                 fixed: 'right',
                 width: 100,
-                render: () => <a href="#">action</a>,
+                render: () => <a>action</a>,
             },
         ];
         this.state = {
@@ -33,7 +33,7 @@ export default class Cp extends Component{
         };
     }
     componentDidMount() {
-        if(typeof(this.props.getData)=='function'){
+        if(typeof(this.props.getData)==='function'){
             this.props.getData();
         }
     }
@@ -45,12 +45,11 @@ export default class Cp extends Component{
         }
     }
     getData(){
-        if(typeof(this.props.getData)=='function'){
+        if(typeof(this.props.getData)==='function'){
             this.props.getData();
         }
     }
     render() {
-        const str = JSON.stringify(this.props)
         return (
             <div>
                 <Button onClick={this.getData}>reaload</Button>

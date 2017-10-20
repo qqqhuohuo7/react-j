@@ -30,3 +30,22 @@
   float: left;
   cursor: pointer;
 }
+.app-layout .user {
+  text-align: center;
+  width: 100px;
+  color: #fff;
+  background: #404040;
+  line-height: 50px;
+  border-radius: 6px;
+  float: right;
+}
+.app-layout .user>a {
+  display: inline-block;
+}
+.app-layout .user .exit-btn{
+  color: #f56a00;
+  background-color: #fde3cf;
+  cursor: pointer;
+  float: right;
+  top: 9px;
+}

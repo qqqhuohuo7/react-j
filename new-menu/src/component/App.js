@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Avatar } from 'antd';
 import 'asset/css/App.css';
 import Content from './content';
 import AllMenu from 'utils/menu';
@@ -44,6 +44,7 @@ class App extends Component {
       <Layout className='app-layout'>
         <Header className='ly-header'>
           <div className="logo" onClick={this.toHome}><Icon type="home" />home </div>
+          <div className='user'><a>User01</a><Avatar className='exit-btn'>exit</Avatar></div>
           <Menu
             theme="dark"
             mode="horizontal"
@@ -55,6 +56,7 @@ class App extends Component {
             <Menu.Item key="1"><Icon type="mail" />nav 2</Menu.Item>
             <Menu.Item key="2"><Icon type="setting" />nav 3</Menu.Item>
           </Menu>
+          
         </Header>
         <Layout className='ly-layout'>
           <Sider width={200} className='ly-sider'>
