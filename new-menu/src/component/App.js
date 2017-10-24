@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Icon, Avatar } from 'antd';
+import { Layout, Menu, Icon, Avatar, Modal } from 'antd';
 import 'asset/css/App.css';
 import Content from './content';
 import AllMenu from 'utils/menu';
@@ -15,6 +15,7 @@ class App extends Component {
     this.toHome = this.toHome.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleSiderClick = this.handleSiderClick.bind(this);
+    this.logout = this.logout.bind(this);
     this.state = {
       current: '0',
       siderCurrent: null,
@@ -39,12 +40,20 @@ class App extends Component {
       siderCurrent: null
     })
   }
+  logout(){
+    Modal.confirm({
+      title: '确认提示',
+      content: '您确定要退出本系统吗？',
+      okText: '确认',
+      cancelText: '取消',
+    });
+  }
   render() {
     return (
       <Layout className='app-layout'>
         <Header className='ly-header'>
           <div className="logo" onClick={this.toHome}><Icon type="home" />home </div>
-          <div className='user'><a>User01</a><Avatar className='exit-btn'>exit</Avatar></div>
+          <div className='user'><a>User01</a><Avatar onClick={this.logout} className='exit-btn'>exit</Avatar></div>
           <Menu
             theme="dark"
             mode="horizontal"

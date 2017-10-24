@@ -156,7 +156,6 @@ module.exports = {
             loader: require.resolve('babel-loader'),
             /* modify for babel-plugin-import(antd按需加载) setting */
             /* options: {
-              
               compact: true,
             }, */
             options: {

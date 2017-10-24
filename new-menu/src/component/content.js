@@ -4,29 +4,26 @@
 import React, {Component} from 'react';
 import { Route } from 'react-router-dom';
 import { Layout } from 'antd';
-// import PageA from 'container/project1/page-A';
-// import PageB from './page/project1/page-B';
+import Bundle from './AsyncLoadModule';
 import 'asset/css/content.css';
 
 const { Content } = Layout;
-const PageA = (location, cb) => {
-    require.ensure([], require => {
-        cb(null, require('container/project1/page-A').default)
-    },'PageA')
-}
-const PageB = (location, cb) => {
-    require.ensure([], require => {
-        cb(null, require('./page/project1/page-B').default)
-    },'PageB')
-}
+const PageA = (props) => (
+    <Bundle load={() => import('../container/project1/page-A')}>
+        {(PageA) => <PageA {...props}/>}
+    </Bundle>
+);
+const PageB = (props) => (
+    <Bundle load={() => import('./page/project1/page-B')}>
+        {(PageB) => <PageB {...props}/>}
+    </Bundle>
+);
 export default class Contents extends Component {
     render() {
         return(
             <Content className='content'>
-                <Route path='/page1' getComponent={PageA}/>
-                <Route path='/page2' getComponent={PageB}/>
-                {/* <Route path='/page1' component={PageA}/>
-                <Route path='/page2' component={PageB}/> */}
+                <Route path='/page1' component={PageA}/>
+                <Route path='/page2' component={PageB}/>
             </Content>
         )
     }
